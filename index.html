@@ -10,6 +10,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -20,18 +24,22 @@
         "SimSun",
         serif;
       color: #51323b;
-      background: #fff0f2;
+      background: #fffaf5;
     }
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
       width: 100%;
-      padding: 24px 7%;
+      padding: 20px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 24px;
-      border-bottom: 1px solid rgba(81, 50, 59, 0.2);
-      background: rgba(255, 240, 242, 0.65);
+      border-bottom: 1px solid rgba(81, 50, 59, 0.15);
+      background: rgba(255, 250, 245, 0.92);
+      backdrop-filter: blur(10px);
     }
 
     .logo {
@@ -50,22 +58,24 @@
       color: #51323b;
       text-decoration: none;
       font-size: 16px;
+      transition: color 0.2s ease;
     }
 
     nav a:hover {
       color: #956875;
     }
 
+    /* 第一页：首页 */
     .hero {
-      min-height: calc(100vh - 80px);
+      min-height: calc(100vh - 72px);
       display: flex;
       align-items: center;
       padding: 70px 7%;
       background:
         linear-gradient(
           90deg,
-          rgba(255, 240, 242, 0.08) 0%,
-          rgba(255, 240, 242, 0.02) 100%
+          rgba(255, 250, 245, 0.08) 0%,
+          rgba(255, 250, 245, 0.02) 100%
         ),
         url("主页background.png.png") center center / cover no-repeat;
     }
@@ -118,6 +128,83 @@
       background: #5e3545;
     }
 
+    /* 第二页：关于 */
+    .about-page {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6%;
+      padding: 70px 8%;
+      background:
+        url("page2background.png.png") center center / cover no-repeat;
+    }
+
+    .about-photo-wrap {
+      flex: 0 1 38%;
+      max-width: 480px;
+    }
+
+    .about-photo {
+      display: block;
+      width: 100%;
+      max-height: 720px;
+      object-fit: contain;
+      border: 8px solid rgba(255, 255, 255, 0.85);
+      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(81, 50, 59, 0.12);
+    }
+
+    .about-content {
+      flex: 1;
+      max-width: 760px;
+    }
+
+    .about-heading {
+      margin: 0 0 20px;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 600;
+      line-height: 1.3;
+      color: #26394b;
+    }
+
+    .about-quote {
+      margin: 0 0 28px;
+      color: #315a7b;
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .about-date {
+      margin: 0 0 24px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-item {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+    }
+
+    .about-label {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 3px 14px;
+      border-radius: 20px;
+      background: rgba(185, 210, 229, 0.65);
+      color: #315a7b;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 18px 5%;
@@ -151,6 +238,34 @@
       .intro {
         font-size: 16px;
       }
+
+      .about-page {
+        flex-direction: column;
+        gap: 36px;
+        padding: 45px 7%;
+      }
+
+      .about-photo-wrap {
+        width: 100%;
+        max-width: 380px;
+      }
+
+      .about-content {
+        width: 100%;
+      }
+
+      .about-heading {
+        font-size: 32px;
+      }
+
+      .about-quote {
+        font-size: 23px;
+      }
+
+      .about-date,
+      .about-item {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -160,6 +275,7 @@
     <div class="logo">TCG · T.晨曦0507🐾</div>
 
     <nav>
+      <a href="#home">首页</a>
       <a href="#about">关于</a>
       <a href="#archive">档案馆</a>
       <a href="#merch">周边</a>
@@ -169,7 +285,8 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- 第一页：首页 -->
+    <section class="hero" id="home">
       <div class="hero-content">
         <h1>T.晨曦0507🐾</h1>
 
@@ -192,6 +309,60 @@
         </a>
       </div>
     </section>
+
+    <!-- 第二页：关于 -->
+    <section class="about-page" id="about">
+      <div class="about-photo-wrap">
+        <img
+          class="about-photo"
+          src="chenxi-photo.png"
+          alt="T.晨曦的人物照片"
+        >
+      </div>
+
+      <div class="about-content">
+        <h2 class="about-heading">关于 T.晨曦</h2>
+
+        <p class="about-quote">
+          “次元有壁，心意无界；<br>
+          谢谢你们跨越屏幕，来到我的世界。”
+        </p>
+
+        <p class="about-date">
+          吉林长春 2025年7月30日来到听潮阁
+        </p>
+
+        <div class="about-list">
+          <p class="about-item">
+            <span class="about-label">粉丝名：</span>
+            曦米露
+          </p>
+
+          <p class="about-item">
+            <span class="about-label">常用皮套：</span>
+            东北大棉袄，小鲨鱼，黄色蛋糕小裙裙，熊猫酱套装，
+            小猫酱套装，奶瓶毛衫，大白兔奶糖，海绵宝宝汉堡套装
+          </p>
+
+          <p class="about-item">
+            <span class="about-label">翻唱：</span>
+            《感官先生》《饮春》《人间共鸣》等
+          </p>
+
+          <p class="about-item">
+            <span class="about-label">拿手绝活：</span>
+            做菜、养荷兰猪、唱歌、自夸、幽默、下沉，以及更多
+            （等待家姐挖掘）
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 其他页面之后再添加内容 -->
+    <section id="archive"></section>
+    <section id="merch"></section>
+    <section id="fanworks"></section>
+    <section id="thoughts"></section>
   </main>
 </body>
 </html>
