@@ -4,40 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T.晨曦0507🐾 | TCG</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-family: "Microsoft YaHei", sans-serif;
+      font-family:
+        "Noto Serif SC",
+        "Songti SC",
+        "STSong",
+        "SimSun",
+        serif;
       color: #51323b;
       background: #fff0f2;
     }
-    main { padding: 24px; }
-    h1 { font-size: clamp(2rem, 6vw, 4rem); }
-    p { font-size: 1.2rem; }
-    .time { color: #956875; }
-    a {
+
+    header {
+      width: 100%;
+      padding: 24px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid rgba(81, 50, 59, 0.2);
+      background: rgba(255, 240, 242, 0.65);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #51323b;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #956875;
+    }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 240, 242, 0.08) 0%,
+          rgba(255, 240, 242, 0.02) 100%
+        ),
+        url("主页background.png.png") center center / cover no-repeat;
+    }
+
+    .hero-content {
+      width: 50%;
+      max-width: 720px;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: clamp(48px, 6vw, 92px);
+      line-height: 1.2;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #51323b;
+    }
+
+    .identity {
+      margin: 0 0 14px;
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: bold;
+    }
+
+    .time {
+      margin: 0 0 24px;
+      font-size: 18px;
+      color: #956875;
+    }
+
+    .intro {
+      margin: 0 0 32px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .douyin-button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 28px;
-      border-radius: 8px;
+      padding: 14px 30px;
+      border-radius: 6px;
       background: #754455;
       color: white;
       text-decoration: none;
+      font-size: 18px;
+      transition: background 0.2s ease;
+    }
+
+    .douyin-button:hover {
+      background: #5e3545;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 18px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 16px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding: 60px 7%;
+        background-position: 60% center;
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(40px, 10vw, 64px);
+      }
+
+      .intro {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <div class="logo">TCG · T.晨曦0507🐾</div>
+
+    <nav>
+      <a href="#about">关于</a>
+      <a href="#archive">档案馆</a>
+      <a href="#merch">周边</a>
+      <a href="#fanworks">二创</a>
+      <a href="#thoughts">晨曦心语</a>
+    </nav>
+  </header>
+
   <main>
-    <h1>T.晨曦0507🐾</h1>
-    <p>虚拟主播 / 歌手</p>
-    <p class="time">直播时间：21:00</p>
-    <p>欢迎来到T.晨曦0507🐾的个人主页！</p>
-    <a href="#" aria-label="抖音主页">抖音主页</a>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>T.晨曦0507🐾</h1>
+
+        <p class="identity">虚拟主播 / 歌手</p>
+
+        <p class="time">直播时间：21:00</p>
+
+        <p class="intro">
+          欢迎来到T.晨曦0507🐾的个人主页！
+        </p>
+
+        <a
+          class="douyin-button"
+          href="https://v.douyin.com/wFbPQacx7YA/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="打开抖音主页"
+        >
+          抖音主页
+        </a>
+      </div>
+    </section>
   </main>
 </body>
 </html>
