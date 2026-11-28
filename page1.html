@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>歌单 | T.晨曦0507</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #554c45;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      background:
+        linear-gradient(rgba(250, 247, 240, 0.72), rgba(250, 247, 240, 0.82)),
+        url("./page2background.png.png") center / cover fixed;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 6%;
+      background: rgba(250, 247, 240, 0.9);
+      border-bottom: 1px solid rgba(120, 105, 88, 0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    nav a {
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      opacity: 1;
+      color: #a47d62;
+    }
+
+    main {
+      width: min(1180px, 90%);
+      margin: 58px auto 80px;
+    }
+
+    .page-heading {
+      margin-bottom: 34px;
+      text-align: center;
+    }
+
+    .page-heading h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 500;
+      letter-spacing: 5px;
+    }
+
+    .page-heading p {
+      margin: 0;
+      color: #93877b;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 26px;
+      background: rgba(255, 253, 248, 0.78);
+      border: 1px solid rgba(150, 130, 108, 0.16);
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(90, 72, 50, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 20px;
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .singer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .singer-item {
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(236, 226, 212, 0.42);
+    }
+
+    .singer-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .singer-item span {
+      color: #9a8876;
+      font-size: 12px;
+    }
+
+    .song-panel {
+      min-width: 0;
+    }
+
+    .song-panel h2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .song-count {
+      color: #a39484;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .song-list {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .song-item {
+      min-width: 0;
+      padding: 11px 6px;
+      overflow-wrap: anywhere;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+      background: rgba(239, 231, 219, 0.55);
+      border: 1px solid rgba(150, 130, 108, 0.1);
+      border-radius: 9px;
+    }
+
+    .song-item:hover {
+      background: rgba(221, 205, 184, 0.65);
+    }
+
+    .page-switch {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .page-switch a {
+      padding: 11px 22px;
+      border: 1px solid rgba(150, 130, 108, 0.25);
+      border-radius: 30px;
+      background: rgba(255, 253, 248, 0.75);
+      font-size: 13px;
+    }
+
+    .page-switch a:hover {
+      background: #e8dccb;
+    }
+
+    footer {
+      padding: 25px;
+      color: #a39484;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .singer-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      main {
+        width: 92%;
+        margin-top: 36px;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .song-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="./index.html">T.晨曦0507</a>
+
+    <nav>
+      <a href="./index.html">首页</a>
+      <a href="./index.html#about">关于</a>
+      <a href="./index.html#archive">归档</a>
+      <a class="active" href="./page1.html">歌单</a>
+      <a href="./index.html#merch">周边</a>
+      <a href="./index.html#fanworks">同人作品</a>
+      <a href="./index.html#thoughts">碎碎念</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <h1>歌单</h1>
+      <p>把喜欢的歌，一首一首收藏起来</p>
+    </section>
+
+    <section class="content">
+      <aside class="panel">
+        <h2>擅长歌手</h2>
+        <div class="singer-list" id="singer-list">
+          <!-- 歌手名单会由 singers.js 加载 -->
+        </div>
+      </aside>
+
+      <section class="panel song-panel">
+        <h2>
+          <span>完整歌单</span>
+          <span class="song-count" id="song-count">共 123 首</span>
+        </h2>
+
+        <div class="song-list" id="song-list">
+          <!-- 歌曲会由 songs-page1.js 加载 -->
+        </div>
+
+        <div class="page-switch">
+          <a href="./index.html">返回首页</a>
+          <a href="./page2.html">下一页 →</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>© T.晨曦0507</footer>
+
+  <script src="./singers.js"></script>
+  <script src="./songs-page1.js"></script>
+</body>
+</html>
