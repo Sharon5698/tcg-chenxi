@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>歌单 | T.晨曦0507</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      color: #5f574e;
+      background:
+        linear-gradient(rgba(250, 247, 240, 0.78), rgba(250, 247, 240, 0.78)),
+        url("./page2background.png.png") center top / cover fixed;
+      min-height: 100vh;
+    }
+
+    header {
+      height: 72px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 253, 248, 0.9);
+      border-bottom: 1px solid rgba(150, 130, 110, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #5f574e;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #82786e;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #b18a68;
+    }
+
+    .page-title {
+      text-align: center;
+      padding: 42px 20px 24px;
+    }
+
+    .page-title h1 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    .page-title p {
+      margin: 0;
+      color: #9b8e80;
+      font-size: 16px;
+    }
+
+    .song-panel {
+      width: min(1400px, 92%);
+      margin: 0 auto 60px;
+      padding: 30px;
+      background: rgba(255, 253, 249, 0.82);
+      border: 1px solid rgba(150, 130, 110, 0.16);
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(100, 80, 60, 0.05);
+    }
+
+    .panel-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .panel-heading h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    #song-count {
+      color: #a39484;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    #song-list {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .song-item {
+      min-height: 50px;
+      padding: 12px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow-wrap: anywhere;
+      background: rgba(241, 236, 226, 0.8);
+      border: 1px solid rgba(150, 130, 110, 0.12);
+      border-radius: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .page-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 20px 50px;
+    }
+
+    .page-bottom a {
+      padding: 10px 22px;
+      color: #776b5f;
+      text-decoration: none;
+      background: rgba(255, 253, 249, 0.85);
+      border: 1px solid rgba(150, 130, 110, 0.18);
+      border-radius: 12px;
+    }
+
+    .page-bottom a:hover {
+      background: #eee5d8;
+    }
+
+    @media (max-width: 1000px) {
+      #song-list {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        height: auto;
+        padding: 18px 5%;
+        align-items: flex-start;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      .song-panel {
+        padding: 20px 14px;
+      }
+
+      #song-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .song-item {
+        font-size: 13px;
+        min-height: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="./index.html">T.晨曦0507</a>
+
+    <nav>
+      <a href="./index.html">首页</a>
+      <a href="./index.html#about">关于</a>
+      <a href="./index.html#archive">归档</a>
+      <a href="./page1.html">歌单</a>
+      <a href="./index.html#merch">周边</a>
+      <a href="./index.html#fanworks">同人作品</a>
+      <a href="./index.html#thoughts">碎碎念</a>
+    </nav>
+  </header>
+
+  <section class="page-title">
+    <h1>歌单 · 第二页</h1>
+    <p>把喜欢的歌，一首一首收藏起来</p>
+  </section>
+
+  <main class="song-panel">
+    <div class="panel-heading">
+      <h2>完整歌单</h2>
+      <span id="song-count">歌曲加载中…</span>
+    </div>
+
+    <div id="song-list"></div>
+  </main>
+
+  <div class="page-bottom">
+    <a href="./page1.html">← 歌单第一页</a>
+    <a href="./index.html">返回首页</a>
+  </div>
+
+  <script src="./songs-page2.js"></script>
+</body>
+</html>
