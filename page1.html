@@ -29,6 +29,7 @@
       text-decoration: none;
     }
 
+    /* 顶部导航 */
     header {
       position: sticky;
       top: 0;
@@ -44,21 +45,27 @@
     }
 
     .logo {
+      flex-shrink: 0;
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     nav {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
       gap: 22px;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     nav a {
+      display: inline-block;
+      padding: 8px 0;
       opacity: 0.75;
-      transition: opacity 0.2s;
+      transition: color 0.2s, opacity 0.2s;
+      white-space: nowrap;
     }
 
     nav a:hover,
@@ -178,6 +185,7 @@
     .page-switch {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 14px;
       margin-top: 36px;
     }
@@ -202,6 +210,11 @@
     }
 
     @media (max-width: 900px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
       .content {
         grid-template-columns: 1fr;
       }
@@ -210,16 +223,20 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      nav {
+        gap: 18px;
+      }
     }
 
     @media (max-width: 600px) {
       header {
-        align-items: flex-start;
-        flex-direction: column;
+        padding: 16px 5%;
       }
 
       nav {
-        gap: 12px;
+        gap: 10px 16px;
+        font-size: 14px;
       }
 
       main {
@@ -243,13 +260,12 @@
     <a class="logo" href="./index.html">T.晨曦0507</a>
 
     <nav>
-      <a href="./index.html">首页</a>
       <a href="./index.html#about">关于</a>
-      <a href="./index.html#archive">归档</a>
+      <a href="./index.html#archive">档案馆</a>
       <a class="active" href="./page1.html">歌单</a>
       <a href="./index.html#merch">周边</a>
-      <a href="./index.html#fanworks">同人作品</a>
-      <a href="./index.html#thoughts">碎碎念</a>
+      <a href="./index.html#fanworks">二创</a>
+      <a href="./index.html#thoughts">晨曦心语</a>
     </nav>
   </header>
 
@@ -270,7 +286,7 @@
       <section class="panel song-panel">
         <h2>
           <span>完整歌单</span>
-          <span class="song-count" id="song-count">共 123 首</span>
+          <span class="song-count" id="song-count">歌曲加载中...</span>
         </h2>
 
         <div class="song-list" id="song-list">
